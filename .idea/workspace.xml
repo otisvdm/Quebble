@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1aa4c003-80bf-486b-8b5e-14885470cb6c" name="Default Changelist" comment="" />
+    <list default="true" id="1aa4c003-80bf-486b-8b5e-14885470cb6c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Vagado/ShopItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Aankoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Aankoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Puntentelling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Puntentelling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Thema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Thema.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -22,11 +41,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Vagado" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Otis\Documents\Vagado\src\main\java\Vagado\data" />
       <recent name="C:\Users\Otis\Documents\Vagado\src\main\java\Vagado" />
@@ -44,6 +67,7 @@
       <updated>1585597948623</updated>
       <workItem from="1585597953893" duration="2243000" />
       <workItem from="1585661686793" duration="5369000" />
+      <workItem from="1585680152841" duration="1369000" />
     </task>
     <servers />
   </component>
@@ -51,9 +75,17 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="656" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1585661706869">
+    <state x="756" y="419" width="408" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585680923415">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="656" y="383" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/1920.40.1920.1040@0.40.1920.1040" timestamp="1585661706869" />
+    <state x="756" y="419" width="408" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.40.1920.1040/1920.40.1920.1040@0.40.1920.1040" timestamp="1585680923415" />
+    <state x="656" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1585680152754">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="656" y="383" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/1920.40.1920.1040@0.40.1920.1040" timestamp="1585680152754" />
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup" timestamp="1585681413692">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="623" y="265" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/1920.40.1920.1040@0.40.1920.1040" timestamp="1585681413692" />
   </component>
 </project>
