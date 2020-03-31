@@ -34,6 +34,8 @@ public class Vragenlijst {
 
     public Vragenlijst[] getBeschikbareVragenlijsten(String playerId) {
         // Hard coded
+        thema = new Thema();
+        thema.maakThema("Thema1");
         Vragenlijst[] vragenlijsten = new Vragenlijst[]{
                 new Vragenlijst(
                         new Vraag[]{
@@ -49,7 +51,7 @@ public class Vragenlijst {
                                 new Vraag(10)
                         },
                         "1",
-                        new Thema()
+                        thema
                         )
         };
 

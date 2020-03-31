@@ -16,6 +16,7 @@ public class Quiz {
     public Quiz(String playerId) {
         this.playerId = playerId;
         vragenlijsten = this.getBeschikbareVragenlijsten(playerId);
+        rondes = new ArrayList<>();
         rondes.add(new Ronde(1));
         puntenTeller = new Puntentelling();
     }
