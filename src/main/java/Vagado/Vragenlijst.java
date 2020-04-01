@@ -1,8 +1,5 @@
 package Vagado;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 public class Vragenlijst {
     MockedDataService mockedDataService = new MockedDataService();
 

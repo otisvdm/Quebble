@@ -27,4 +27,12 @@ public class MockedDataService {
                 )
         };
     }
+
+    public String[] getOpties() {
+        return new String[]{"1", "2", "3", "4", "5"};
+    }
+
+    public String getAntwoord() {
+        return "1";
+    }
 }
