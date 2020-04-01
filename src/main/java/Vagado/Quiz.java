@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Quiz {
-    String quizId;
-    int punten;
-    String playerId;
-    ArrayList<Ronde> rondes;
-    Vragenlijst[] vragenlijsten;
-    Puntentelling puntenTeller;
-    Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag(1)}, "1", new Thema());
-    Vraag[] vragen;
+
+    private String quizId;
+    private int punten;
+    private String playerId;
+    private ArrayList<Ronde> rondes;
+    private Vragenlijst[] vragenlijsten;
+    private Puntentelling puntenTeller;
+    private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag(1)}, "1", new Thema());
+    private Vraag[] vragen;
 
     public Quiz(String playerId) {
         this.playerId = playerId;
@@ -22,8 +23,8 @@ public class Quiz {
     }
 
     public String maakQuiz() {
-        quizId = UUID.randomUUID().toString();
-        return quizId;
+        this.quizId = UUID.randomUUID().toString();
+        return this.quizId;
     }
 
     public Vragenlijst[] getBeschikbareVragenlijsten(String playerId) {

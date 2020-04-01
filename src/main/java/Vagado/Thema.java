@@ -3,8 +3,9 @@ package Vagado;
 import java.util.UUID;
 
 public class Thema {
-    String id;
-    String naam;
+
+    private String id;
+    private String naam;
 
     public Thema() {
         id = UUID.randomUUID().toString();

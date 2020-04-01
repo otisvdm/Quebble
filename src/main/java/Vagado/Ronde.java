@@ -1,10 +1,11 @@
 package Vagado;
 
 public class Ronde {
-    int rondenummer;
-    String antwoord;
-    Vraag vraag;
-    int rondeTijd;
+
+    private int rondenummer;
+    private String antwoord;
+    private Vraag vraag;
+    private int rondeTijd;
 
     public Ronde(int rondenummer) {
         this.rondenummer = rondenummer;

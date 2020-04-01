@@ -1,7 +1,9 @@
 package Vagado;
 
 public class ShopItem {
-    Vragenlijst vragenlijst;
+
+    private Vragenlijst vragenlijst;
+
     public ShopItem(Vragenlijst vragenlijst) {
         this.vragenlijst = vragenlijst;
     }

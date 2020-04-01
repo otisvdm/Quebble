@@ -3,8 +3,8 @@ package Vagado;
 import java.util.Date;
 
 public class Aankoop {
-    Date datum;
-    int lifeTimeBest;
+    private Date datum;
+    private int lifeTimeBest;
 
     public void opslaanAankoop(Date datum, ShopItem item) {
         this.datum = datum;
