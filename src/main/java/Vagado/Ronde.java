@@ -1,6 +1,6 @@
 package Vagado;
 
-public class Ronde {
+public class Ronde implements iRonde{
 
     private int rondenummer;
     private String antwoord;
@@ -15,5 +15,17 @@ public class Ronde {
         this.antwoord = antwoord;
         this.rondeTijd = tijd;
         this.vraag = vraag;
+    }
+
+    public String getAntwoord() {
+        return antwoord;
+    }
+
+    public int getRondeTijd() {
+        return rondeTijd;
+    }
+
+    public Vraag getVraag() {
+        return vraag;
     }
 }
