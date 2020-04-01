@@ -11,8 +11,8 @@ public class Quiz {
     private ArrayList<Ronde> rondes;
     private Vragenlijst[] vragenlijsten;
     private Puntentelling puntenTeller;
-    private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag(1)}, "1", new Thema());
-    private Vraag[] vragen;
+    private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1")}, "1", new Thema());
+    public Vraag[] vragen;
 
     public Quiz(String playerId) {
         this.playerId = playerId;
@@ -43,7 +43,7 @@ public class Quiz {
         }
     }
 
-    public int eindigQuiz(int quizId) {
+    public int eindigQuiz() {
         if (rondes.size() == 10) {
             return puntenTeller.telPunten(vragen, rondes);
         } else {

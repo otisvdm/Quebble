@@ -54,9 +54,23 @@ public class Main {
             Vragenlijst[] vragenlijsten = quiz.getBeschikbareVragenlijsten(playerId);
             System.out.println("Kies het ID van een van de vragenlijsten:");
             for (Vragenlijst vragenlijst : vragenlijsten) {
+                System.out.println(vragenlijst.getThema());
                 System.out.println("ID: "+vragenlijst.getId()+" -- Thema: "+vragenlijst.getThema().getNaam());
             }
             String id = reader.readLine();
+            quiz.kiesVragenlijst(vragenlijsten[Integer.parseInt(id)-1]);
+            for (int i = 0; i < 10; i++) {
+                System.out.println(quiz.vragen[i].getVraag());
+                // implement meerkeuzevraag/gewoneVraag
+
+                String antwoord = reader.readLine();
+
+                //Implement timer to give time till answer as third parameter
+                quiz.beantwoordVraag(antwoord, quiz.vragen[i], 1);
+            }
+            int punten = quiz.eindigQuiz();
+            System.out.println(punten);
+            quizstate = false;
         }
         while (shopstate) {
             System.out.println("Shop");
