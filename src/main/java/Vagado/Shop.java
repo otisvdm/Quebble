@@ -29,7 +29,7 @@ public class Shop {
         // Add playerId and shopitem to json data of purchase
     }
 
-    public boolean controleerSaldo(float saldo, ShopItem item) {
+    private boolean controleerSaldo(float saldo, ShopItem item) {
         // Hard coded
         return true;
 
