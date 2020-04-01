@@ -4,6 +4,7 @@ public class Vraag {
 
     private int vraagId;
     private String vraag;
+    private boolean isMultipleChoice;
 
     public Vraag(int vraagId) {
         this.vraagId = vraagId;
