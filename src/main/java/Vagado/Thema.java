@@ -29,4 +29,20 @@ public class Thema {
     public void verwijderThema(String id) {
         // Delete json data for theme with id
     }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

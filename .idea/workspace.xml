@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1aa4c003-80bf-486b-8b5e-14885470cb6c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Quiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Vagado/Vragenlijst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Vagado/Vragenlijst.java" afterDir="false" />
-    </list>
+    <list default="true" id="1aa4c003-80bf-486b-8b5e-14885470cb6c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,6 +86,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="783" y="1426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585745536699">
+      <screen x="214" y="1080" width="1440" height="900" />
+    </state>
+    <state x="783" y="1426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/214.1080.1440.900/0.0.1920.1080@214.1080.1440.900" timestamp="1585745536699" />
     <state x="756" y="419" width="408" height="289" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585680923415">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>

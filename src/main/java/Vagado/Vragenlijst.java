@@ -1,9 +1,10 @@
 package Vagado;
 
 public class Vragenlijst {
-    String id;
-    Vraag[] vragen;
-    Thema thema;
+
+    private String id;
+    private Vraag[] vragen;
+    private Thema thema;
 
     public Vragenlijst(Vraag[] vragen, String id, Thema thema) {
         this.id = id;
@@ -60,5 +61,21 @@ public class Vragenlijst {
         // Vragenlijst[] vragenlijsten =
 
         return vragenlijsten;
+    }
+
+    public Thema getThema() {
+        return thema;
+    }
+
+    public void setThema(Thema thema) {
+        this.thema = thema;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -54,7 +54,7 @@ public class Main {
             Vragenlijst[] vragenlijsten = quiz.getBeschikbareVragenlijsten(playerId);
             System.out.println("Kies het ID van een van de vragenlijsten:");
             for (Vragenlijst vragenlijst : vragenlijsten) {
-                System.out.println("ID: "+vragenlijst.id+" -- Thema: "+vragenlijst.thema.naam);
+                System.out.println("ID: "+vragenlijst.getId()+" -- Thema: "+vragenlijst.getThema().getNaam());
             }
             String id = reader.readLine();
         }
