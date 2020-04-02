@@ -26,5 +26,8 @@ public class Vraag {
         return openAntwoord;
     }
 
+    public String getVraagString() {
+        return vraag;
+    }
 
 }

@@ -60,7 +60,7 @@ public class Main {
             String id = reader.readLine();
             quiz.kiesVragenlijst(vragenlijsten[Integer.parseInt(id)-1]);
             for (int i = 0; i < 10; i++) {
-                System.out.println(quiz.vragen[i].getVraag());
+                System.out.println(quiz.vragen[i].getVraagString());
                 // implement meerkeuzevraag/gewoneVraag
 
                 String antwoord = reader.readLine();
