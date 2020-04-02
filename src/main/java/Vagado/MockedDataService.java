@@ -3,16 +3,16 @@ package Vagado;
 public class MockedDataService {
     public Vraag[] getMockVragen() {
         return new Vraag[]{
-                new Vraag("Vraag1"),
-                new Vraag("Vraag2"),
-                new Vraag("Vraag3"),
-                new Vraag("Vraag4"),
-                new Vraag("Vraag5"),
-                new Vraag("Vraag6"),
-                new Vraag("Vraag7"),
-                new Vraag("Vraag8"),
-                new Vraag("Vraag9"),
-                new Vraag("Vraag10")
+                new Vraag("Vraag1", true),
+                new Vraag("Vraag2", false),
+                new Vraag("Vraag3", false),
+                new Vraag("Vraag4", false),
+                new Vraag("Vraag5", true),
+                new Vraag("Vraag6", false),
+                new Vraag("Vraag7", true),
+                new Vraag("Vraag8", true),
+                new Vraag("Vraag9", true),
+                new Vraag("Vraag10", false)
         };
     }
 
