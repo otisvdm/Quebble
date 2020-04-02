@@ -1,7 +1,5 @@
 package Vagado;
 
-import Vagado.Puntentelling;
-
 public class TelStrategie2 extends Puntentelling {
 
     public TelStrategie2() {
@@ -12,7 +10,7 @@ public class TelStrategie2 extends Puntentelling {
     public int telPunten(Ronde[] rondes) {
         int punten = 0;
         for (Ronde ronde : rondes) {
-            if (ronde.getVraag().getVraag().equals(ronde.getAntwoord())) {
+            if (ronde.getVraag().getVraagEnAntwoord().equals(ronde.getAntwoord())) {
                 punten += 2;
                 if (ronde.getRondeTijd() < 10) {
                     punten++;

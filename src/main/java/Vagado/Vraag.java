@@ -14,7 +14,7 @@ public class Vraag {
         this.isMultipleChoice = isMultipleChoice;
     }
 
-    public Map<String, String[]> getVraag() {
+    public Map<String, String[]> getVraagEnAntwoord() {
         if (isMultipleChoice) {
             iAntwoord = new MeerKeuzeAntwoord();
             Map<String, String[]> antwoorden = new HashMap<>();
@@ -26,7 +26,7 @@ public class Vraag {
         return openAntwoord;
     }
 
-    public String getVraagString() {
+    public String getVraag() {
         return vraag;
     }
 
