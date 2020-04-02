@@ -29,4 +29,8 @@ public class Ronde implements iRonde{
     public Vraag getVraag() {
         return vraag;
     }
+
+    public int getRondenummer() {
+        return rondenummer;
+    }
 }
