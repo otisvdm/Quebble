@@ -6,7 +6,7 @@ import java.util.UUID;
 public interface iQuiz {
     public String maakQuiz();
 
-    public Vragenlijst[] getBeschikbareVragenlijsten(String playerId);
+    public Vragenlijst[] getBeschikbareVragenlijsten(int playerId);
 
     public void kiesVragenlijst(Vragenlijst lijst);
 

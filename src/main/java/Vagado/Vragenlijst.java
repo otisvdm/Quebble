@@ -1,6 +1,6 @@
 package Vagado;
 
-public class Vragenlijst {
+public class Vragenlijst implements iVragenlijst {
     MockedDataService mockedDataService = new MockedDataService();
 
     private String id;
@@ -18,7 +18,7 @@ public class Vragenlijst {
         return vragen;
     }
 
-    public Vragenlijst[] getBeschikbareVragenlijsten(String playerId) {
+    public Vragenlijst[] getBeschikbareVragenlijsten(int playerId) {
         return mockedDataService.getMockVragenlijsten();
     }
 

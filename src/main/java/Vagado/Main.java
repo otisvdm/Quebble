@@ -12,7 +12,7 @@ public class Main {
         boolean adminloginstate = false;
         boolean shopstate = false;
         boolean quizstate = false;
-        String playerId = "";
+        int playerId = 0;
         String adminId = "";
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -31,7 +31,7 @@ public class Main {
         }
         while (playerloginstate) {
             System.out.println("playerId:");
-            playerId = reader.readLine();
+            playerId = Integer.parseInt(reader.readLine());
             System.out.println("Wat wilt u doen?");
             System.out.println("Quiz(1)");
             System.out.println("Shop(2)");
@@ -68,7 +68,7 @@ public class Main {
                 //Implement timer to give time till answer as third parameter
                 quiz.beantwoordVraag(antwoord, quiz.vragen[i], 1);
             }
-            int punten = quiz.eindigQuiz();
+            int punten = quiz.eindigQuiz("1");
             System.out.println(punten);
             quizstate = false;
         }

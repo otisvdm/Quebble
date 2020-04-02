@@ -6,13 +6,13 @@ public class Quiz implements iQuiz {
 
     private String quizId;
     private int punten;
-    private String playerId;
+    private int playerId;
     private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
     private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1")}, "1", new Thema());
     public Vraag[] vragen;
 
-    public Quiz(String playerId) {
+    public Quiz(int playerId) {
         this.playerId = playerId;
         vragenlijsten = this.getBeschikbareVragenlijsten(playerId);
         rondes = new Ronde[1];
@@ -23,7 +23,7 @@ public class Quiz implements iQuiz {
         return this.quizId;
     }
 
-    public Vragenlijst[] getBeschikbareVragenlijsten(String playerId) {
+    public Vragenlijst[] getBeschikbareVragenlijsten(int playerId) {
         return vragenlijst.getBeschikbareVragenlijsten(playerId);
     }
 
