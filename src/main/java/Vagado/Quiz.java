@@ -1,7 +1,5 @@
 package Vagado;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 public class Quiz implements iQuiz {
@@ -36,7 +34,7 @@ public class Quiz implements iQuiz {
 
     public void beantwoordVraag(String antwoord, Vraag vraag, int tijd) {
         if (rondes.length < 10) {
-            rondes[rondes.length - 1].bewaarAntwoordInRonde(antwoord, tijd, vraag);
+            rondes[rondes.length - 1].bewaarAntwoordInRonde(rondes.length, antwoord, tijd, vraag);
             Ronde[] newRondes = new Ronde[rondes.length + 1];
             System.arraycopy(rondes, 0, newRondes, 0, rondes.length);
             newRondes[rondes.length + 1] = new Ronde(rondes.length + 1);

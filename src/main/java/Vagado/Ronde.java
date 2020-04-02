@@ -11,7 +11,8 @@ public class Ronde implements iRonde{
         this.rondenummer = rondenummer;
     }
 
-    public void bewaarAntwoordInRonde(String antwoord, int tijd, Vraag vraag) {
+    public void bewaarAntwoordInRonde(int rondenummer, String antwoord, int tijd, Vraag vraag) {
+        this.rondenummer = rondenummer;
         this.antwoord = antwoord;
         this.rondeTijd = tijd;
         this.vraag = vraag;
