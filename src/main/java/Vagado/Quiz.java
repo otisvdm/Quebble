@@ -9,7 +9,7 @@ public class Quiz implements iQuiz {
     private int playerId;
     private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
-    private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1")}, "1", new Thema());
+    private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1", true)}, "1", new Thema());
     public Vraag[] vragen;
 
     public Quiz(int playerId) {
