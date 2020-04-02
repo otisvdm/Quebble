@@ -34,8 +34,10 @@ public class Quiz implements iQuiz {
     }
 
     public void beantwoordVraag(String antwoord, Vraag vraag, int tijd) {
-        if (rondes.length < 10) {
+        if (rondes.length <= 10) {
             rondes[rondes.length - 1].bewaarAntwoordInRonde(rondes.length, antwoord, tijd, vraag);
+        }
+        if (rondes.length < 10) {
             Ronde[] newRondes = new Ronde[rondes.length + 1];
             System.arraycopy(rondes, 0, newRondes, 0, rondes.length);
             newRondes[rondes.length] = new Ronde(rondes.length + 1);
