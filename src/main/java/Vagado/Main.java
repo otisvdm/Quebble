@@ -54,7 +54,6 @@ public class Main {
             Vragenlijst[] vragenlijsten = quiz.getBeschikbareVragenlijsten(playerId);
             System.out.println("Kies het ID van een van de vragenlijsten:");
             for (Vragenlijst vragenlijst : vragenlijsten) {
-                System.out.println(vragenlijst.getThema());
                 System.out.println("ID: "+vragenlijst.getId()+" -- Thema: "+vragenlijst.getThema().getNaam());
             }
             String id = reader.readLine();
@@ -66,7 +65,6 @@ public class Main {
                 String antwoord = reader.readLine();
 
                 //Implement timer to give time till answer as third parameter
-                System.out.println(antwoord);
                 quiz.beantwoordVraag(antwoord, quiz.vragen[i], 1);
             }
             int punten = quiz.eindigQuiz("1");
