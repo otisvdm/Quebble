@@ -66,6 +66,7 @@ public class Main {
                 String antwoord = reader.readLine();
 
                 //Implement timer to give time till answer as third parameter
+                System.out.println(antwoord);
                 quiz.beantwoordVraag(antwoord, quiz.vragen[i], 1);
             }
             int punten = quiz.eindigQuiz("1");
