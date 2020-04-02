@@ -2,10 +2,9 @@ package Vagado;
 
 public abstract class Antwoord implements iAntwoord{
     MockedDataService mockedDataService = new MockedDataService();
-
-    protected String antwoord;
-    private String[] foutieveOpties;
+    protected String antwoord = mockedDataService.getAntwoord();
+    public abstract String[] getAlleOpties();
     public String getAntwoord() {
-        return mockedDataService.getAntwoord();
+        return antwoord;
     }
 }
