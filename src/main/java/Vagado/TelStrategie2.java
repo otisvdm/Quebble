@@ -3,6 +3,11 @@ package Vagado;
 import Vagado.Puntentelling;
 
 public class TelStrategie2 extends Puntentelling {
+
+    public TelStrategie2() {
+        super();
+    }
+
     @Override
     public int telPunten(Ronde[] rondes) {
         int punten = 0;
