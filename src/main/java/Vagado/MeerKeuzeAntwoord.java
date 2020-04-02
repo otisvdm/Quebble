@@ -5,9 +5,7 @@ public class MeerKeuzeAntwoord extends Antwoord {
     public MeerKeuzeAntwoord() {
         super();
     }
-
     private MockedDataService mockedDataService = new MockedDataService();
-
     private String[] mogelijkheden = mockedDataService.getOpties();
 
     @Override
