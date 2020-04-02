@@ -1,14 +1,15 @@
 package Vagado;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
-public class Quiz {
+public class Quiz implements iQuiz {
 
     private String quizId;
     private int punten;
     private String playerId;
-    private ArrayList<Ronde> rondes;
+    private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
     private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1")}, "1", new Thema());
     public Vraag[] vragen;
@@ -16,8 +17,7 @@ public class Quiz {
     public Quiz(String playerId) {
         this.playerId = playerId;
         vragenlijsten = this.getBeschikbareVragenlijsten(playerId);
-        rondes = new ArrayList<>();
-        rondes.add(new Ronde(1));
+        rondes = new Ronde[1];
     }
 
     public String maakQuiz() {
@@ -35,14 +35,17 @@ public class Quiz {
     }
 
     public void beantwoordVraag(String antwoord, Vraag vraag, int tijd) {
-        rondes.get(rondes.size() - 1).bewaarAntwoordInRonde(antwoord, tijd, vraag);
-        if(rondes.size() < 10) {
-            rondes.add(new Ronde(rondes.size() + 1));
+        if (rondes.length < 10) {
+            rondes[rondes.length - 1].bewaarAntwoordInRonde(antwoord, tijd, vraag);
+            Ronde[] newRondes = new Ronde[rondes.length + 1];
+            System.arraycopy(rondes, 0, newRondes, 0, rondes.length);
+            newRondes[rondes.length + 1] = new Ronde(rondes.length + 1);
+            rondes = newRondes;
         }
     }
 
     public int eindigQuiz(String strategie) {
-        if (rondes.size() == 10) {
+        if (rondes.length == 10) {
             Puntentelling puntenteller;
             if (strategie.equals("2")) {
                 puntenteller = new TelStrategie2();
@@ -53,7 +56,7 @@ public class Quiz {
             else { // strategie "1"
                 puntenteller = new TelStrategie1();
             }
-            return puntenteller.telPunten(vragen, rondes);
+            return puntenteller.telPunten(rondes);
         } else {
             return 0;
         }
