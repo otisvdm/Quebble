@@ -50,7 +50,7 @@ public class Main {
         while (quizstate) {
             System.out.println("Quiz");
             Quiz quiz = new Quiz(playerId);
-            quiz.maakQuiz();
+            quiz.maakQuiz("2");
             Vragenlijst[] vragenlijsten = quiz.getBeschikbareVragenlijsten(playerId);
             System.out.println("Kies het ID van een van de vragenlijsten:");
             for (Vragenlijst vragenlijst : vragenlijsten) {
@@ -60,15 +60,20 @@ public class Main {
             quiz.kiesVragenlijst(vragenlijsten[Integer.parseInt(id)-1]);
             for (int i = 0; i < 10; i++) {
                 System.out.println(quiz.vragen[i].getVraag());
-                // implement meerkeuzevraag/gewoneVraag
+                if (quiz.vragen[i].isMultipleChoice()) {
+                    for (Antwoord antwoord : quiz.vragen[i].getAntwoorden()) {
+                        System.out.println(antwoord.getAntwoord());
+                    }
+                }
 
                 String antwoord = reader.readLine();
 
                 //Implement timer to give time till answer as third parameter
                 quiz.beantwoordVraag(antwoord, quiz.vragen[i], 1);
             }
-            int punten = quiz.eindigQuiz("1");
-            System.out.println(punten);
+            int punten = quiz.getPunten();
+            System.out.println("EINDE QUIZ!");
+            System.out.println("Punten: "+punten);
             quizstate = false;
         }
         while (shopstate) {

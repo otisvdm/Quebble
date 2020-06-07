@@ -1,33 +1,33 @@
 package Vagado;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Vraag {
 
-    private String vraag;
+    private String id;
     private boolean isMultipleChoice;
-    private iAntwoord iAntwoord;
+    private String vraag;
+    private Antwoord[] antwoorden;
 
     public Vraag(String vraag, boolean isMultipleChoice) {
         this.vraag = vraag;
         this.isMultipleChoice = isMultipleChoice;
+
+        // Hard coded solution just for this demo
+        if (isMultipleChoice) {
+            this.antwoorden = new Antwoord[]{new Antwoord("1", true),new Antwoord("2", false),new Antwoord("3", false)};
+        } else {
+            this.antwoorden = new Antwoord[]{new Antwoord("2", true)};
+        }
     }
 
-    public Map<String, String[]> getVraagEnAntwoord() {
-        if (isMultipleChoice) {
-            iAntwoord = new MeerKeuzeAntwoord();
-            Map<String, String[]> antwoorden = new HashMap<>();
-            antwoorden.put("meerkeuze", iAntwoord.getAlleOpties());
-            return antwoorden;
-        }
-        Map<String, String[]> openAntwoord = new HashMap<>();
-        openAntwoord.put("open", null);
-        return openAntwoord;
+    public Antwoord[] getAntwoorden() {
+        return antwoorden;
     }
 
     public String getVraag() {
         return vraag;
     }
 
+    public boolean isMultipleChoice() {
+        return isMultipleChoice;
+    }
 }

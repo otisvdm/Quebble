@@ -7,6 +7,7 @@ public class Quiz implements iQuiz {
     private String quizId;
     private int punten;
     private int playerId;
+    private String strategie;
     private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
     private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1", true)}, "1", new Thema());
@@ -19,8 +20,9 @@ public class Quiz implements iQuiz {
         rondes[0] = new Ronde(1);
     }
 
-    public String maakQuiz() {
+    public String maakQuiz(String strategie) {
         this.quizId = UUID.randomUUID().toString();
+        this.strategie = strategie;
         return this.quizId;
     }
 
@@ -43,9 +45,12 @@ public class Quiz implements iQuiz {
             newRondes[rondes.length] = new Ronde(rondes.length + 1);
             rondes = newRondes;
         }
+        if (rondes.length == 10) {
+            punten = this.eindigQuiz();
+        }
     }
 
-    public int eindigQuiz(String strategie) {
+    private int eindigQuiz() {
         if (rondes.length == 10) {
             Puntentelling puntenteller;
             if (strategie.equals("2")) {
@@ -61,5 +66,9 @@ public class Quiz implements iQuiz {
         } else {
             return 0;
         }
+    }
+
+    public int getPunten() {
+        return punten;
     }
 }
