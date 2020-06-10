@@ -50,7 +50,8 @@ public class Main {
         while (quizstate) {
             System.out.println("Quiz");
             Quiz quiz = new Quiz(playerId);
-            quiz.maakQuiz("2");
+            TelStrategie2 strategie2 = new TelStrategie2();
+            quiz.maakQuiz(strategie2);
             Vragenlijst[] vragenlijsten = quiz.getBeschikbareVragenlijsten(playerId);
             System.out.println("Kies het ID van een van de vragenlijsten:");
             for (Vragenlijst vragenlijst : vragenlijsten) {

@@ -1,5 +1,7 @@
 package Vagado;
 
+import sun.util.resources.Bundles;
+
 import java.util.UUID;
 
 public class Quiz implements iQuiz {
@@ -7,7 +9,7 @@ public class Quiz implements iQuiz {
     private String quizId;
     private int punten;
     private int playerId;
-    private String strategie;
+    private Puntentelling puntentelling;
     private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
     private Vragenlijst vragenlijst = new Vragenlijst(new Vraag[]{new Vraag("Vraag1", true)}, "1", new Thema());
@@ -20,9 +22,9 @@ public class Quiz implements iQuiz {
         rondes[0] = new Ronde(1);
     }
 
-    public String maakQuiz(String strategie) {
+    public String maakQuiz(Puntentelling strategie) {
         this.quizId = UUID.randomUUID().toString();
-        this.strategie = strategie;
+        this.puntentelling = strategie;
         return this.quizId;
     }
 
@@ -52,17 +54,7 @@ public class Quiz implements iQuiz {
 
     private int eindigQuiz() {
         if (rondes.length == 10) {
-            Puntentelling puntenteller;
-            if (strategie.equals("2")) {
-                puntenteller = new TelStrategie2();
-            }
-
-            // Add all of your extra strategies here
-
-            else { // strategie "1"
-                puntenteller = new TelStrategie1();
-            }
-            return puntenteller.telPunten(rondes);
+            return puntentelling.telPunten(rondes);
         } else {
             return 0;
         }
