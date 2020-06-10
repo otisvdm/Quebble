@@ -1,14 +1,11 @@
 package Vagado;
 
-import sun.util.resources.Bundles;
-
 import java.util.UUID;
 
 public class Quiz implements iQuiz {
 
     private String quizId;
     private int punten;
-    private int playerId;
     private Puntentelling puntentelling;
     private Ronde[] rondes;
     private Vragenlijst[] vragenlijsten;
@@ -16,7 +13,6 @@ public class Quiz implements iQuiz {
     public Vraag[] vragen;
 
     public Quiz(int playerId) {
-        this.playerId = playerId;
         vragenlijsten = this.getBeschikbareVragenlijsten(playerId);
         rondes = new Ronde[1];
         rondes[0] = new Ronde(1);

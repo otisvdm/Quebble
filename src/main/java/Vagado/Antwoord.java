@@ -1,7 +1,6 @@
 package Vagado;
 
 public class Antwoord {
-    MockedDataService mockedDataService = new MockedDataService();
     private String antwoord;
     private boolean isJuist;
     public Antwoord(String antwoord, boolean isJuist) {
