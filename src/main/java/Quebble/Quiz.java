@@ -72,7 +72,7 @@ public class Quiz implements iQuiz {
     }
 
     private iVraag getVraag(int vraagNummer) {
-        return this.vragen[vraagNummer - 1];
+        return this.vragen[vraagNummer-1];
     }
 
     public void setTelstrategie(iTelstrategie telstrategie) {

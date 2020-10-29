@@ -8,9 +8,7 @@ import Quebble.iQuiz;
 import Quebble.iSpeler;
 import Quebble.iVraag;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class QuizHandler {
 
@@ -27,7 +25,7 @@ public class QuizHandler {
     public Map<String, String[]> ophalenVragen(int quizId, String gebruikersnaam) throws Exception {
         iQuiz quiz = datastore.getQuiz(quizId);
         iVraag[] v = quiz.getVragen();
-        Map<String, String[]> quizVragen = new HashMap<>();
+        Map<String, String[]> quizVragen = new LinkedHashMap<>();
         for (iVraag vraag: v) {
            if (vraag instanceof MeerkeuzeVraag) {
                String[] antwoorden = ((MeerkeuzeVraag) vraag).getAntwoordenVoorQuiz();
