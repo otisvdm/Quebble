@@ -10,11 +10,10 @@ public abstract class Persoon implements iPersoon {
         this.wachtwoord = wachtwoord;
     }
 
+    @Override
     public abstract String getGebruikersnaam();
 
-    public abstract void setGebruikersnaam(String gebruikersnaam);
-
+    @Override
     public abstract String getWachtwoord();
 
-    public abstract void setWachtwoord(String wachtwoord);
 }

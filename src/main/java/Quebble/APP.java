@@ -14,7 +14,6 @@ public class APP {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Datastore datastore = Datastore.getInstance();
-        String gebruikersnaam = "speler";
         QuizHandler quizHandler = new QuizHandler();
         SpelerHandler spelerHandler = new SpelerHandler();
         MedewerkerHandler medewerkerHandler = new MedewerkerHandler();
@@ -22,32 +21,28 @@ public class APP {
         quizHandler.setDatastore(datastore);
         spelerHandler.setDatastore(datastore);
         medewerkerHandler.setDatastore(datastore);
+        
 
-        System.out.println("Nieuwe quiz starten? (Y/N)");
-        String confirmation = reader.readLine();
-        if (confirmation.equals("Y")) {
-            try {
-                Map<String, String[]> vragen = quizHandler.startQuiz(gebruikersnaam);
-                int vraagnummer = 0;
-                for (String[] vraag : vragen) {
-                    vraagnummer++;
-                    System.out.println(vraag[0]);
-                    if (vraag[1] != null) {
-                        for (int i = 1; i < vraag.length; i++) {
-                            System.out.println(i + " " +vraag[i]);
-                        }
-                    }
-                    String antwoord = reader.readLine();
-                    //TODO Hoe komen we hier aan een quizId? En we moeten nog tijd bij gaan houden kutzooi
-                    quizHandler.beantwoordVraag("quizid", gebruikersnaam, vraagnummer, antwoord, 1);
+        switch(confirmation) {
+            case "1":
+                System.out.println("Voer een gebruikersnaam in.");
+                String gebruikersnaam = reader.readLine();
+                System.out.println("Voer een wachtwoord in.");
+                String wachtwoord = reader.readLine();
+                try {
+                    spelerHandler.registreerSpeler(gebruikersnaam, wachtwoord);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                System.out.println();
-            } catch(Exception e) {
-                //TODO dit is niet netjes en moet anders
-                e.printStackTrace();
-            }
-
-
         }
+    }
+
+    public String showStartup() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Welkom bij Quebble, de leukste quiz van Nederland");
+        System.out.println("Kies 1 om te registreren.");
+        System.out.println("Kies 2 om in te loggen.");
+        System.out.println("Kies 3 om in te loggen als medewerker");
+        return reader.readLine();
     }
 }

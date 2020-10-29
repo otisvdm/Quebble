@@ -23,6 +23,7 @@ public class QuizHandler {
         iQuiz quiz = datastore.getBeschikbareQuiz(gebruikersnaam);
         iSpeler speler = datastore.getSpeler(gebruikersnaam);
         speler.verrekenCredits();
+        datastore.updateSpeler(speler);
         iVraag[] v = quiz.getVragen();
         for (iVraag vraag: v) {
            if (vraag instanceof MeerkeuzeVraag) {
@@ -38,22 +39,18 @@ public class QuizHandler {
         iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
         quiz.beantwoordVraag(vraagNummer, antwoord, tijd);
         datastore.slaVoortgangOp(quiz, gebruikersnaam);
-        if (vraagNummer == 8) {
-            char[] letters = quiz.getLetters();
-
-            return letters;
+        if (vraagNummer >= 8) {
+            return quiz.getLetters();
         }
         return null;
     }
 
     public int setWoord(String gebruikersnaam, String quizId, String woord) {
         iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
-        iSpeler speler = datastore.getSpeler(gebruikersnaam);
         quiz.setWoord(woord);
         SpelGeschiedenis sg = quiz.telPunten();
-        SpelGeschiedenis sg = new SpelGeschiedenis(speler, quiz, punten);
         datastore.opslaanScore(sg);
-        return punten;
+        return sg.getPunten();
     }
 
 

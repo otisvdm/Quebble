@@ -1,6 +1,6 @@
 package Quebble;
 
-public class Quiz implements iQuiz{
+public class Quiz implements iQuiz {
 
     private int id;
     private SpelGeschiedenis sg;
@@ -59,7 +59,7 @@ public class Quiz implements iQuiz{
     @Override
     public SpelGeschiedenis telPunten() {
         int punten = telstrategie.telPunten(antwoorden, woord);
-        return new SpelGeschiedenis(speler, , punten);
+        return new SpelGeschiedenis(speler, this, punten);
     }
 
     @Override

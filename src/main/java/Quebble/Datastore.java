@@ -9,7 +9,7 @@ public class Datastore {
     private static Datastore datastore = new Datastore();
 
     private Datastore() {
-
+        alleQuizzen.add(quiz1);
     }
 
     public static Datastore getInstance() {
@@ -25,12 +25,18 @@ public class Datastore {
         return this.vragenLijst;
     }
 
-    public Quiz getBeschikbareQuiz(String gebruikersnaam) {
-        return mockedQuiz();
+    // TODO => Deze nog goed laten werken
+    public iQuiz getBeschikbareQuiz(String gebruikersnaam) {
+        return alleQuizzen.get(0);
     }
 
-    public Speler getSpeler(String gebruikersnaam) {
-        return new Speler("speler", "wachtwoord");
+    public iSpeler getSpeler(String gebruikersnaam) throws Exception {
+        for (iSpeler speler : geregistreerdeSpelers) {
+            if (speler.getGebruikersnaam().equals(gebruikersnaam)) {
+                return speler;
+            }
+        }
+        throw new Exception("De speler is niet gevonden in het systeem.");
     }
 
     public void slaVoortgangOp(iQuiz quiz, String gebruikersnaam) {
@@ -42,20 +48,30 @@ public class Datastore {
         }
     }
 
-    public Quiz getQuiz(String quizId, String gebruikersnaam) {
-        return mockedQuiz();
-    }
-
-    public Quiz mockedQuiz() {
-        return new Quiz(new Random().nextInt(), this.vragenLijst);
+    // TODO => Deze goed laten werken
+    public iQuiz getQuiz(String quizId, String gebruikersnaam) {
+        return alleQuizzen.get(0);
     }
 
     public void opslaanScore(SpelGeschiedenis spelGeschiedenis) {
-        //Sla nieuwe spelgeschiedenis op wanneer de topScore is verbroken
+         spelGeschiedenisLijst.add(spelGeschiedenis);
     }
 
     public void opslaanSpeler(iSpeler speler) {
+        for (iSpeler s: geregistreerdeSpelers) {
+            if (s.getGebruikersnaam().equals(speler.getGebruikersnaam())) {
+                s = speler;
+            }
+        }
         geregistreerdeSpelers.add(speler);
+    }
+
+    public void updateSpeler(iSpeler speler) {
+        for (iSpeler s: geregistreerdeSpelers) {
+            if (s.getGebruikersnaam().equals(speler.getGebruikersnaam())) {
+                s = speler;
+            }
+        }
     }
 
     public boolean loginSpeler(String gebruikersnaam, String wachtwoord) throws Exception {
@@ -170,6 +186,7 @@ public class Datastore {
     private List<iQuiz> actieveQuizzenLijst = new ArrayList<>();
 
     // Dit is een lijst met alle bestaande quizzen in de applicatie
+    private iQuiz quiz1 = new Quiz(new Random().nextInt(), vragenLijst);
     private List<iQuiz> alleQuizzen = new ArrayList<>();
 
     // Dit is een lijst met alle gespeelde quizzen door spelers
