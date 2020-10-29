@@ -1,7 +1,6 @@
 package Quebble.handlers;
 
 import Quebble.Datastore;
-import Quebble.MeerkeuzeAntwoord;
 import Quebble.MeerkeuzeVraag;
 import Quebble.Quiz;
 import Quebble.SpelGeschiedenis;

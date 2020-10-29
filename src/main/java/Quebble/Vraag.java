@@ -16,8 +16,6 @@ public abstract class Vraag implements iVraag {
 
     public abstract String getVraag();
 
-    public abstract MeerkeuzeAntwoord[] getAntwoorden();
-
     public abstract boolean controleerAntwoord(String antwoord);
 
     public abstract char getLetter();

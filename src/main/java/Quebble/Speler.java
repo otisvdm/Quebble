@@ -10,15 +10,13 @@ public class Speler extends Persoon implements iSpeler {
         this.voegRegistratieCreditsToe();
     }
 
-    public Speler(String gebruikersnaam, String wachtwoord, int credits) {
-        super(gebruikersnaam, wachtwoord);
-        this.credits = credits;
-    }
+
 
     private void voegRegistratieCreditsToe() {
         this.credits = 1000;
     }
 
+    @Override
     public void verrekenCredits() throws Exception {
         if (this.credits < 40) {
             throw new Exception("Niet genoeg credits!");
