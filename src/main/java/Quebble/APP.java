@@ -42,6 +42,8 @@ public class APP {
             int punten = quizHandler.setWoord(ingelogdeGebruiker, quizId, woord);
             System.out.println("Gefeliciteerd, je hebt " + punten  + " verdient!");
             System.exit(0);
+        } else {
+            run();
         }
     }
 
@@ -103,7 +105,7 @@ public class APP {
                 String wachtwoord = reader.readLine();
                 try {
                     spelerHandler.registreerSpeler(gebruikersnaam, wachtwoord);
-                    return (String) showStartup();
+                    return null;
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     return (String) processStartup("1");

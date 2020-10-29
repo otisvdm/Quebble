@@ -12,6 +12,7 @@ public class Woord implements iWoord {
         this.woord = woord;
     }
 
+    @Override
     public String getWoord() {
         return this.woord;
     }
