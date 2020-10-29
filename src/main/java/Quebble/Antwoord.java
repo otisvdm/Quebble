@@ -8,8 +8,13 @@ public abstract class Antwoord implements iAntwoord {
         this.antwoord = antwoord;
     }
 
-    public abstract  String getAntwoord();
+    @Override
+    public abstract String getAntwoord();
 
+    @Override
     public abstract void setAntwoord(String antwoord);
+
+    @Override
+    public abstract boolean controleerAntwoord(String antwoord);
 
 }

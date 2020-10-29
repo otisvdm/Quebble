@@ -9,6 +9,7 @@ public class MeerkeuzeAntwoord extends Antwoord {
         this.isCorrect = isCorrect;
     }
 
+    @Override
     public String getAntwoord() {
         return this.antwoord;
     }
@@ -18,6 +19,7 @@ public class MeerkeuzeAntwoord extends Antwoord {
         this.antwoord = antwoord;
     }
 
+    @Override
     public boolean controleerAntwoord(String antwoord) {
         return (antwoord.equals(this.antwoord) && this.isCorrect);
     }
