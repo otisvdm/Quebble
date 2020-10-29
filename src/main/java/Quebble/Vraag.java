@@ -1,21 +1,28 @@
 package Quebble;
 
 public abstract class Vraag implements iVraag {
-    private String vraag;
-    private boolean isActief;
-    private char letter;
 
-    public String getVraag() {
-        return this.vraag;
-    }
-    public MeerkeuzeAntwoord[] getAntwoorden() {
-        throw new UnsupportedOperationException();
-    }
-    public boolean controleerAntwoord(String antwoord) {
-        throw new UnsupportedOperationException();
+    protected int id;
+    protected String vraag;
+    protected boolean isActief;
+    protected char letter;
+
+    public Vraag(int id, String vraag, char letter, boolean isActief) {
+        this.id = id;
+        this.vraag = vraag;
+        this.letter = letter;
+        this.isActief = isActief;
     }
 
-    public char getLetter() {
-        throw new UnsupportedOperationException();
-    }
+    public abstract String getVraag();
+
+    public abstract MeerkeuzeAntwoord[] getAntwoorden();
+
+    public abstract boolean controleerAntwoord(String antwoord);
+
+    public abstract char getLetter();
+
+    public abstract void setLetter(char letter);
+
+    public abstract int getId();
 }

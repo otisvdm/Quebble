@@ -1,24 +1,33 @@
 package Quebble;
 
+import Quebble.handlers.MedewerkerHandler;
 import Quebble.handlers.QuizHandler;
+import Quebble.handlers.SpelerHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 public class APP {
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
+        Datastore datastore = Datastore.getInstance();
         String gebruikersnaam = "speler";
         QuizHandler quizHandler = new QuizHandler();
+        SpelerHandler spelerHandler = new SpelerHandler();
+        MedewerkerHandler medewerkerHandler = new MedewerkerHandler();
+        // Inject datastore in QuizHandler and SpelerHandler
+        quizHandler.setDatastore(datastore);
+        spelerHandler.setDatastore(datastore);
+        medewerkerHandler.setDatastore(datastore);
 
         System.out.println("Nieuwe quiz starten? (Y/N)");
         String confirmation = reader.readLine();
         if (confirmation.equals("Y")) {
             try {
-                String[][] vragen = quizHandler.startQuiz(gebruikersnaam);
+                Map<String, String[]> vragen = quizHandler.startQuiz(gebruikersnaam);
                 int vraagnummer = 0;
                 for (String[] vraag : vragen) {
                     vraagnummer++;

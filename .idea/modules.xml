@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Vagado.iml" filepath="$PROJECT_DIR$/Vagado.iml" />
+      <module fileurl="file://$PROJECT_DIR$/quebble.iml" filepath="$PROJECT_DIR$/quebble.iml" />
     </modules>
   </component>
 </project>

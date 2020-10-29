@@ -1,39 +1,47 @@
 package Quebble;
 
 public class Quiz implements iQuiz{
-    private Long id;
-    private SpelGeschiedenis sg;
-    private Speler speler;
-    private SpelerAntwoord[] antwoorden;
-    private Vraag[] vragen;
 
-    public Quiz(Long id, Vraag[] vragen) {
+    private int id;
+    private SpelGeschiedenis sg;
+    private iSpeler speler;
+    private iSpelerAntwoord[] antwoorden;
+    private iVraag[] vragen;
+    private iTelstrategie telstrategie;
+    private iWoord woord;
+
+    public Quiz(int id, iVraag[] vragen) {
         this.id = id;
         this.vragen = vragen;
         this.antwoorden = new SpelerAntwoord[8];
     }
 
-    public void setSpeler(Speler speler) {
+    @Override
+    public void setSpeler(iSpeler speler) {
         this.speler = speler;
     }
 
-    public Vraag[] getVragen() {
+    @Override
+    public iVraag[] getVragen() {
         return this.vragen;
     }
 
-    private Vraag getVraag(int vraagNummer) {
-        return this.vragen[vraagNummer - 1];
+    @Override
+    public void setVragen(iVraag[] vragen) {
+        this.vragen = vragen;
     }
 
+    @Override
     public void beantwoordVraag(int vraagNummer, String antwoord, int tijd) {
-        Vraag vraag = this.getVraag(vraagNummer);
+        iVraag vraag = this.getVraag(vraagNummer);
         SpelerAntwoord sa = new SpelerAntwoord(antwoord, tijd);
         if (vraag.controleerAntwoord(antwoord)) {
             sa.setLetter(vraag.getLetter());
         }
-        this.antwoorden[vraagNummer-1] = sa;
+        this.antwoorden[vraagNummer - 1] = sa;
     }
 
+    @Override
     public char[] getLetters() {
         char[] letters = new char[8];
         for (int i = 0; i < 8; i++) {
@@ -42,12 +50,33 @@ public class Quiz implements iQuiz{
         return letters;
     }
 
+    @Override
     public void setWoord(String spelerWoord) {
-        Woord woord = new Woord(spelerWoord);
-        woord.setWoord();
+        iWoord woord = new Woord(spelerWoord);
+        woord.controleerWoord();
     }
 
-    public int telpunten() {
-        return 1;
+    @Override
+    public SpelGeschiedenis telPunten() {
+        int punten = telstrategie.telPunten(antwoorden, woord);
+        return new SpelGeschiedenis(speler, , punten);
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private iVraag getVraag(int vraagNummer) {
+        return this.vragen[vraagNummer - 1];
+    }
+
+    public void setTelstrategie(iTelstrategie telstrategie) {
+        this.telstrategie = telstrategie;
     }
 }

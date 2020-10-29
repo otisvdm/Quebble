@@ -1,14 +1,12 @@
 package Quebble;
 
-public class MeerkeuzeVraag extends Vraag implements iVraag {
-    private String vraag;
-    private MeerkeuzeAntwoord[] meerkeuzeAntwoorden;
-    private char letter;
+public class MeerkeuzeVraag extends Vraag {
 
-    public MeerkeuzeVraag(String vraag, MeerkeuzeAntwoord[] meerkeuzeAntwoorden, char letter) {
+    private MeerkeuzeAntwoord[] meerkeuzeAntwoorden;
+
+    public MeerkeuzeVraag(int id, String vraag, MeerkeuzeAntwoord[] meerkeuzeAntwoorden, char letter) {
+        super(id, vraag, letter, true);
         this.meerkeuzeAntwoorden = meerkeuzeAntwoorden;
-        this.vraag = vraag;
-        this.letter = letter;
     }
 
     public String getVraag() {
@@ -17,10 +15,12 @@ public class MeerkeuzeVraag extends Vraag implements iVraag {
 
     @Override
     public boolean controleerAntwoord(String antwoord) {
-        for (MeerkeuzeAntwoord meerkeuzeAntwoord : meerkeuzeAntwoorden) {
-            if (meerkeuzeAntwoord.controleerAntwoord(antwoord)) {return true;}
+        try {
+            int antwoordIndex = this.getAntwoordIndex(antwoord);
+            return meerkeuzeAntwoorden[antwoordIndex].controleerAntwoord(antwoord);
+        } catch (Exception e) {
+            return false;
         }
-        return true;
     }
 
     @Override
@@ -28,8 +28,41 @@ public class MeerkeuzeVraag extends Vraag implements iVraag {
         return meerkeuzeAntwoorden;
     }
 
+    public String[] getAntwoordenVoorQuiz() {
+        String[] quizAntwoorden = new String[meerkeuzeAntwoorden.length];
+        for (int i = 0; i < meerkeuzeAntwoorden.length; ++i) {
+            quizAntwoorden[i] = meerkeuzeAntwoorden[i].getAntwoord();
+        }
+        return quizAntwoorden;
+    }
+
     @Override
     public char getLetter() {
         return this.letter;
+    }
+
+    @Override
+    public void setLetter(char letter) {
+        this.letter = letter;
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
+    }
+
+    private int getAntwoordIndex(String antwoord) throws Exception {
+        switch(antwoord) {
+            case "A":
+                return 0;
+            case "B":
+                return 1;
+            case "C":
+                return 2;
+            case "D":
+                return 3;
+            default:
+                throw new Exception("Answer not possible");
+        }
     }
 }

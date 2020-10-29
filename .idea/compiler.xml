@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="quebble" />
         <module name="Vagado" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="quebble" target="1.11" />
       <module name="Vagado" target="8" />
     </bytecodeTargetLevel>
   </component>

@@ -1,18 +1,21 @@
 package Quebble;
 
-public class KortAntwoordVraag extends Vraag implements iVraag{
-    private String vraag;
-    private KortAntwoord[] mogelijkeAntwoorden;
-    private char letter;
+public class KortAntwoordVraag extends Vraag {
 
-    public KortAntwoordVraag(String vraag, KortAntwoord[] mogelijkeAntwoorden, char letter) {
+    private KortAntwoord[] mogelijkeAntwoorden;
+
+    public KortAntwoordVraag(int id, String vraag, KortAntwoord[] mogelijkeAntwoorden, char letter) {
+        super(id, vraag, letter, true);
         this.mogelijkeAntwoorden = mogelijkeAntwoorden;
-        this.vraag = vraag;
-        this.letter = letter;
     }
 
     public String getVraag() {
         return this.vraag;
+    }
+
+    @Override
+    public MeerkeuzeAntwoord[] getAntwoorden() {
+        throw new UnsupportedOperationException("Kort antwoord heeft geen meerkeuze antwoorden");
     }
 
     @Override
@@ -28,5 +31,15 @@ public class KortAntwoordVraag extends Vraag implements iVraag{
     @Override
     public char getLetter() {
         return this.letter;
+    }
+
+    @Override
+    public void setLetter(char letter) {
+
+    }
+
+    @Override
+    public int getId() {
+        return this.id;
     }
 }

@@ -1,54 +1,97 @@
 package Quebble.handlers;
 
-import Quebble.*;
+import Quebble.Datastore;
+import Quebble.MeerkeuzeAntwoord;
+import Quebble.MeerkeuzeVraag;
+import Quebble.Quiz;
+import Quebble.SpelGeschiedenis;
+import Quebble.iAntwoord;
+import Quebble.iQuiz;
+import Quebble.iSpeler;
+import Quebble.iVraag;
 
-public class QuizHandler extends Datastore {
-    private Quiz quiz;
-    private iSpeler speler;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
-    public String[][] startQuiz(String gebruikersnaam) throws Exception {
-        this.quiz = getBeschikbareQuiz(gebruikersnaam);
-        this.speler = getSpeler(gebruikersnaam);
-        try {
-            this.speler.verrekenCredits();
-        } catch(Exception e) {
-            throw new Exception(e);
+public class QuizHandler {
+
+    private Datastore datastore;
+
+    public Map<String, String[]> startQuiz(String gebruikersnaam) throws Exception {
+        Map<String, String[]> quizVragen = new HashMap<>();
+        iQuiz quiz = datastore.getBeschikbareQuiz(gebruikersnaam);
+        iSpeler speler = datastore.getSpeler(gebruikersnaam);
+        speler.verrekenCredits();
+        iVraag[] v = quiz.getVragen();
+        for (iVraag vraag: v) {
+           if (vraag instanceof MeerkeuzeVraag) {
+               String[] antwoorden = ((MeerkeuzeVraag) vraag).getAntwoordenVoorQuiz();
+               quizVragen.put(vraag.getVraag(), antwoorden);
+           }
         }
-        slaVoortgangOp(this.quiz, gebruikersnaam);
-        Vraag[] vragen = this.quiz.getVragen();
-        String[][] parsedVragen = new String[8][5];
-
-        for (int vraagnummer = 0; vraagnummer < vragen.length; vraagnummer++) {
-            parsedVragen[vraagnummer][0] = vragen[vraagnummer].getVraag();
-            if (vragen[vraagnummer] instanceof MeerkeuzeVraag)
-                for (int mogelijkAntwoordnummer = 1; mogelijkAntwoordnummer < 5; mogelijkAntwoordnummer++) {
-                    parsedVragen[vraagnummer][mogelijkAntwoordnummer] = vragen[vraagnummer].getAntwoorden()[mogelijkAntwoordnummer-1].getAntwoord();
-                }
-        }
-        this.quiz = null;
-        return parsedVragen;
+        datastore.slaVoortgangOp(quiz, gebruikersnaam);
+        return quizVragen;
     }
 
-    public void beantwoordVraag(String quizId, String gebruikersnaam, int vraagNummer, String antwoord, int tijd) {
-        if (this.quiz == null) {
-            this.quiz = getQuiz(quizId, gebruikersnaam);
-        }
-        this.quiz.beantwoordVraag(vraagNummer, antwoord, tijd);
+    public char[] beantwoordVraag(String quizId, String gebruikersnaam, int vraagNummer, String antwoord, int tijd) {
+        iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
+        quiz.beantwoordVraag(vraagNummer, antwoord, tijd);
 
         if (vraagNummer == 8) {
-            char[] letters = this.quiz.getLetters();
-            slaVoortgangOp(quiz, gebruikersnaam);
-            this.quiz = null;
-            //TODO return letters;
+            char[] letters = quiz.getLetters();
+            datastore.slaVoortgangOp(quiz, gebruikersnaam);
+            return letters;
         }
+        return null;
     }
 
     public int setWoord(String gebruikersnaam, String quizId, String woord) {
-        this.quiz = getQuiz(quizId, gebruikersnaam);
+        iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
+        iSpeler speler = datastore.getSpeler(gebruikersnaam);
         quiz.setWoord(woord);
-        int punten = this.quiz.telpunten();
-        SpelGeschiedenis sg = new SpelGeschiedenis(this.speler, this.quiz, punten);
-        opslaanScore(sg);
+        SpelGeschiedenis sg = quiz.telPunten();
+        SpelGeschiedenis sg = new SpelGeschiedenis(speler, quiz, punten);
+        datastore.opslaanScore(sg);
         return punten;
     }
+
+
+    public Map<Integer, String> getVragen() {
+        Map<Integer, String> vragen = new HashMap<>();
+        iVraag[] actieveVragen = datastore.getAlleActieveVragen();
+        for (iVraag vraag: actieveVragen) {
+           vragen.put(vraag.getId(), vraag.getVraag());
+        }
+        return vragen;
+    }
+
+    public void maakQuiz(int[] vragenlijst) throws Exception {
+        if (vragenlijst.length == 8) {
+            iVraag[] geselecteerdeVragen = datastore.getVragen(vragenlijst);
+            iQuiz quiz = new Quiz(new Random().nextInt(), geselecteerdeVragen);
+            datastore.opslaanQuiz(quiz);
+        } else {
+            throw new Exception("Een quiz dient acht vragen te beschikken.");
+        }
+    }
+
+    public void getQuizzen() {
+        iQuiz[] quizzen = datastore.getAlleQuizzen();
+    }
+
+    public void wijzigQuiz(int quizId, int[] gekozenVragen) throws Exception {
+        if (gekozenVragen.length == 8) {
+            iVraag[] geselecteerdeVragen = datastore.getVragen(gekozenVragen);
+            iQuiz quiz = datastore.getQuiz(quizId);
+            quiz.setVragen(geselecteerdeVragen);
+            datastore.opslaanQuiz(quiz);
+        }
+    }
+
+    // Inject datastore instance
+    public void setDatastore(Datastore datastore) {
+        this.datastore = datastore;
+    }
+
 }

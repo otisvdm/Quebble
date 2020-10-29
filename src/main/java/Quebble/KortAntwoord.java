@@ -1,9 +1,18 @@
 package Quebble;
 
-public class KortAntwoord implements iAntwoord{
-    private String antwoord;
+public class KortAntwoord extends Antwoord {
 
     public KortAntwoord(String antwoord) {
+        super(antwoord);
+    }
+
+    @Override
+    public String getAntwoord() {
+        return this.antwoord;
+    }
+
+    @Override
+    public void setAntwoord(String antwoord) {
         this.antwoord = antwoord;
     }
 

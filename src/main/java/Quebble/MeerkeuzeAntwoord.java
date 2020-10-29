@@ -1,11 +1,11 @@
 package Quebble;
 
-public class MeerkeuzeAntwoord implements iAntwoord {
-    private String antwoord;
+public class MeerkeuzeAntwoord extends Antwoord {
+
     private boolean isCorrect;
 
     public MeerkeuzeAntwoord(String antwoord, boolean isCorrect) {
-        this.antwoord = antwoord;
+        super(antwoord);
         this.isCorrect = isCorrect;
     }
 
@@ -13,7 +13,13 @@ public class MeerkeuzeAntwoord implements iAntwoord {
         return this.antwoord;
     }
 
+    @Override
+    public void setAntwoord(String antwoord) {
+        this.antwoord = antwoord;
+    }
+
     public boolean controleerAntwoord(String antwoord) {
         return (antwoord.equals(this.antwoord) && this.isCorrect);
     }
+
 }

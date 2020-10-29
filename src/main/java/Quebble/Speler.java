@@ -1,28 +1,39 @@
 package Quebble;
 
-public class Speler implements iSpeler{
-    private String gebruikersnaam;
-    private String wachtwoord;
+public class Speler extends Persoon implements iSpeler {
+
+
     private int credits;
 
-    public Speler(String gebruikersnaam, String wachtwoord, int credits) {
-        this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
-        this.credits = credits;
+    public Speler(String gebruikersnaam, String wachtwoord) {
+        super(gebruikersnaam, wachtwoord);
+        this.voegRegistratieCreditsToe();
     }
 
-    private void voegCreditsToe() {
-
+    private void voegRegistratieCreditsToe() {
+        this.credits = 1000;
     }
 
     public void verrekenCredits() throws Exception {
-        if (this.credits <= 40) {
+        if (this.credits < 40) {
             throw new Exception("Niet genoeg credits!");
         } else {
             this.credits -= 40;
-            //TODO
-            //datastore credits updaten maar da mag niet direct vanuit Speler dus waddan
         }
     }
 
+    @Override
+    public String getGebruikersnaam() {
+        return this.gebruikersnaam;
+    }
+
+    @Override
+    public String getWachtwoord() {
+        return this.wachtwoord;
+    }
+
+    @Override
+    public int getCredits() {
+        return this.credits;
+    }
 }

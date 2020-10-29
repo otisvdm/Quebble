@@ -1,5 +1,5 @@
 package Quebble;
 
 public interface iTelstrategie {
-    int telPunten(SpelerAntwoord antwoordLijst, Woord woord, String strategie);
+    int telPunten(iSpelerAntwoord[] antwoordLijst, iWoord woord);
 }

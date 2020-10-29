@@ -5,7 +5,8 @@ public class Strategie1 implements iTelstrategie {
     /*
      * De implementatie van een puntentelling algoritme valt buiten de scope van deze opdracht.
      */
-    public int telPunten(SpelerAntwoord antwoordLijst, Woord woord, String strategie) {
+    @Override
+    public int telPunten(iSpelerAntwoord[] antwoordLijst, iWoord woord) {
         return 1;
     }
 }
