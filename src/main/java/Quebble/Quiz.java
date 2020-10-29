@@ -33,8 +33,8 @@ public class Quiz implements iQuiz {
 
     @Override
     public void beantwoordVraag(int vraagNummer, String antwoord, int tijd) {
-        iVraag vraag = this.getVraag(vraagNummer);
         SpelerAntwoord sa = new SpelerAntwoord(antwoord, tijd);
+        iVraag vraag = this.getVraag(vraagNummer);
         if (vraag.controleerAntwoord(antwoord)) {
             sa.setLetter(vraag.getLetter());
         }

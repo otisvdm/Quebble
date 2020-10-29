@@ -5,7 +5,6 @@ import Quebble.MeerkeuzeAntwoord;
 import Quebble.MeerkeuzeVraag;
 import Quebble.Quiz;
 import Quebble.SpelGeschiedenis;
-import Quebble.iAntwoord;
 import Quebble.iQuiz;
 import Quebble.iSpeler;
 import Quebble.iVraag;
@@ -29,6 +28,8 @@ public class QuizHandler {
            if (vraag instanceof MeerkeuzeVraag) {
                String[] antwoorden = ((MeerkeuzeVraag) vraag).getAntwoordenVoorQuiz();
                quizVragen.put(vraag.getVraag(), antwoorden);
+           } else {
+               quizVragen.put(vraag.getVraag(), null);
            }
         }
         datastore.slaVoortgangOp(quiz, gebruikersnaam);
@@ -73,8 +74,13 @@ public class QuizHandler {
         }
     }
 
-    public void getQuizzen() {
+    public int[] getQuizzen() {
         iQuiz[] quizzen = datastore.getAlleQuizzen();
+        int[] quizIds = new int[quizzen.length];
+        for (int i = 0; i < quizzen.length; ++i) {
+            quizIds[i] = quizzen[i].getId();
+        }
+        return quizIds;
     }
 
     public void wijzigQuiz(int quizId, int[] gekozenVragen) throws Exception {

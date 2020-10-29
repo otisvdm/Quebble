@@ -12,17 +12,7 @@ public class Medewerker extends Persoon {
     }
 
     @Override
-    public void setGebruikersnaam(String gebruikersnaam) {
-
-    }
-
-    @Override
     public String getWachtwoord() {
         return null;
-    }
-
-    @Override
-    public void setWachtwoord(String wachtwoord) {
-
     }
 }
