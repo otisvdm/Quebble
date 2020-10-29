@@ -140,7 +140,19 @@ public class APP {
         }
         int quizId = parseInt(reader.readLine());
         printVragen();
-        
+        int index = 0;
+        int[] geselecteerdeIds = new int[8];
+        while (index < 8) {
+            System.out.println("Er zijn " + index + " vragen geselecteerd.");
+            geselecteerdeIds[index] = parseInt(reader.readLine());
+            ++index;
+        }
+        try {
+            quizHandler.wijzigQuiz(quizId, geselecteerdeIds);
+        } catch(Exception e) {
+            processMedewerkerMenu("2");
+        }
+        medewerkerMenu();
     }
 
     private void printVragen() {
