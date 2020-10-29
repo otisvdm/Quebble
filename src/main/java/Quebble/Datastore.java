@@ -49,7 +49,7 @@ public class Datastore {
     }
 
     // TODO => Deze goed laten werken
-    public iQuiz getQuiz(String quizId, String gebruikersnaam) {
+    public iQuiz getQuiz(int quizId, String gebruikersnaam) {
         return alleQuizzen.get(0);
     }
 

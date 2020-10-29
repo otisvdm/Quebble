@@ -17,13 +17,18 @@ public class QuizHandler {
 
     private Datastore datastore;
 
-    public Map<String, String[]> startQuiz(String gebruikersnaam) throws Exception {
-        Map<String, String[]> quizVragen = new HashMap<>();
+    public int startQuiz(String gebruikersnaam) throws Exception {
         iQuiz quiz = datastore.getBeschikbareQuiz(gebruikersnaam);
         iSpeler speler = datastore.getSpeler(gebruikersnaam);
         speler.verrekenCredits();
         datastore.updateSpeler(speler);
+        return quiz.getId();
+    }
+
+    public Map<String, String[]> ophalenVragen(int quizId, String gebruikersnaam) throws Exception {
+        iQuiz quiz = datastore.getQuiz(quizId);
         iVraag[] v = quiz.getVragen();
+        Map<String, String[]> quizVragen = new HashMap<>();
         for (iVraag vraag: v) {
            if (vraag instanceof MeerkeuzeVraag) {
                String[] antwoorden = ((MeerkeuzeVraag) vraag).getAntwoordenVoorQuiz();
@@ -36,7 +41,7 @@ public class QuizHandler {
         return quizVragen;
     }
 
-    public char[] beantwoordVraag(String quizId, String gebruikersnaam, int vraagNummer, String antwoord, int tijd) {
+    public char[] beantwoordVraag(int quizId, String gebruikersnaam, int vraagNummer, String antwoord, int tijd) {
         iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
         quiz.beantwoordVraag(vraagNummer, antwoord, tijd);
         datastore.slaVoortgangOp(quiz, gebruikersnaam);
@@ -46,7 +51,7 @@ public class QuizHandler {
         return null;
     }
 
-    public int setWoord(String gebruikersnaam, String quizId, String woord) {
+    public int setWoord(String gebruikersnaam, int quizId, String woord) {
         iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
         quiz.setWoord(woord);
         SpelGeschiedenis sg = quiz.telPunten();

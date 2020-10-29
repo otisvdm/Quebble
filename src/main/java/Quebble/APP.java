@@ -19,20 +19,67 @@ public class APP {
     private MedewerkerHandler medewerkerHandler = new MedewerkerHandler();
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         APP app = new APP();
     }
 
-    public APP() throws IOException {
+    public APP() throws Exception {
         quizHandler.setDatastore(datastore);
         spelerHandler.setDatastore(datastore);
         medewerkerHandler.setDatastore(datastore);
         this.run();
     }
 
-    private void run() throws IOException {
+    private void run() throws Exception {
         String startupKeuze = this.showStartup();
         String ingelogdeGebruiker = processStartup(startupKeuze);
+        if (ingelogdeGebruiker != null) {
+            System.out.println("Begin een quiz!");
+            int quizId = quizHandler.startQuiz(ingelogdeGebruiker);
+            Map<String, String[]> quizVragen = quizHandler.ophalenVragen(quizId, ingelogdeGebruiker);
+            char[] letters = printVragen(quizId, ingelogdeGebruiker, quizVragen);
+            String woord = printLetters(quizId, ingelogdeGebruiker, letters);
+            int punten = quizHandler.setWoord(ingelogdeGebruiker, quizId, woord);
+            System.out.println("Gefeliciteerd, je hebt " + punten  + " verdient!");
+            System.exit(0);
+        }
+    }
+
+    private String printLetters(int quizId, String speler, char[] letters) throws IOException {
+        System.out.println("Maak van de verdiende letters het bonus woord");
+        System.out.print("De verkregen letters zijn: ");
+        System.out.print("[");
+        for (char letter: letters) {
+            System.out.print(" " + letter + ", ");
+        }
+        System.out.print("]");
+        return reader.readLine();
+    }
+
+    private char[] printVragen(int quizId, String speler, Map<String, String[]> quizVragen) throws IOException {
+        int index = 1;
+        char[] letters = null;
+        String[] opties = {"A", "B", "C", "D"};
+        for (Map.Entry<String, String[]> entry : quizVragen.entrySet()) {
+            long start = System.currentTimeMillis();
+            System.out.println("Vraag " + index);
+            System.out.println(entry.getKey());
+            if (entry.getValue() != null) {
+                int optieIndex = 0;
+                for(String s: entry.getValue()) {
+                    System.out.println(opties[optieIndex] + ": " + s);
+                    ++optieIndex;
+                }
+            }
+            System.out.println("\n");
+            System.out.println("Geef een antwoord op de vraag");
+            String antwoord = reader.readLine();
+            long end = System.currentTimeMillis();
+            int time = (int) (end - start) / 1000;
+            letters = quizHandler.beantwoordVraag(quizId, speler, index, antwoord, time);
+            ++index;
+        }
+        return letters;
     }
 
 
@@ -100,6 +147,7 @@ public class APP {
         System.out.println("Kies 2 om een quiz te wijzigen");
         System.out.println("Kies 3 om uit te loggen.");
         String menuOptie = (String) reader.readLine();
+        processMedewerkerMenu(menuOptie);
     }
 
     private void processMedewerkerMenu(String menuOptie) throws IOException {
@@ -114,6 +162,9 @@ public class APP {
                 System.out.println("Wijzig een quiz");
                 System.out.println("Kies een quiz om te wijzigen");
                 wijzigQuiz();
+            case "3":
+                System.out.println("Uitlogd!");
+                this.showStartup();
         }
     }
 
