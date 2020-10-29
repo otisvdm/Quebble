@@ -8,11 +8,11 @@ public class Medewerker extends Persoon {
 
     @Override
     public String getGebruikersnaam() {
-        return null;
+       return this.gebruikersnaam;
     }
 
     @Override
     public String getWachtwoord() {
-        return null;
+        return this.wachtwoord;
     }
 }

@@ -7,9 +7,9 @@ public class MedewerkerHandler {
     private Datastore datastore;
 
     public String loginMedewerker(String gebruikersnaam, String wachtwoord) throws Exception {
-        boolean speler = datastore.loginSpeler(gebruikersnaam, wachtwoord);
+        boolean speler = datastore.loginMedewerker(gebruikersnaam, wachtwoord);
         if (!speler) {
-            throw new Exception("Geen speler gevonden met de ingevoerde gebruikernaam.");
+            throw new Exception("Geen medewerker gevonden met de ingevoerde gebruikernaam.");
         } else {
             return gebruikersnaam;
         }

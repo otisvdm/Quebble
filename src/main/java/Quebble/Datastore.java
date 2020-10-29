@@ -77,6 +77,7 @@ public class Datastore {
     public boolean loginSpeler(String gebruikersnaam, String wachtwoord) throws Exception {
         for (iSpeler speler : geregistreerdeSpelers) {
             if (speler.getGebruikersnaam().equals(gebruikersnaam)) {
+                System.out.println(speler.getGebruikersnaam());
                 if (speler.getWachtwoord().equals(wachtwoord)) {
                     return true;
                 } else {
@@ -90,6 +91,7 @@ public class Datastore {
     public boolean loginMedewerker(String gebruikersnaam, String wachtwoord) throws Exception {
         for (Medewerker m : medewerkers) {
             if (m.getGebruikersnaam().equals(gebruikersnaam)) {
+                System.out.println("haha" + m.wachtwoord);
                 if (m.getWachtwoord().equals(wachtwoord)) {
                     return true;
                 } else {

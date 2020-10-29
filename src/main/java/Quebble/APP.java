@@ -83,7 +83,8 @@ public class APP {
                         medewerkerMenu();
                     }
                 } catch (Exception e) {
-                    return (String) processStartup("3");
+                    System.out.println(e.getMessage());
+                    return (String) showStartup();
                 }
             case "4":
                 System.out.println("Bedankt voor het spelen van Quebble! Tot snel!");
@@ -135,8 +136,8 @@ public class APP {
 
     private void wijzigQuiz() throws IOException {
         int[] quizIds = quizHandler.getQuizzen();
-        for (int i = 0; i < quizIds.length; ++i) {
-            System.out.println("Quiz id: " + quizIds[i]);
+        for (int id : quizIds) {
+            System.out.println("Quiz id: " + id);
         }
         int quizId = parseInt(reader.readLine());
         printVragen();
