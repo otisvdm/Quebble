@@ -37,10 +37,10 @@ public class QuizHandler {
     public char[] beantwoordVraag(String quizId, String gebruikersnaam, int vraagNummer, String antwoord, int tijd) {
         iQuiz quiz = datastore.getQuiz(quizId, gebruikersnaam);
         quiz.beantwoordVraag(vraagNummer, antwoord, tijd);
-
+        datastore.slaVoortgangOp(quiz, gebruikersnaam);
         if (vraagNummer == 8) {
             char[] letters = quiz.getLetters();
-            datastore.slaVoortgangOp(quiz, gebruikersnaam);
+
             return letters;
         }
         return null;
