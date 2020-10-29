@@ -13,6 +13,9 @@ public class Quiz implements iQuiz {
         this.id = id;
         this.vragen = vragen;
         this.antwoorden = new SpelerAntwoord[8];
+
+        // Hier kun je de telstrategie wijzigen
+        this.telstrategie = new Strategie1();
     }
 
     @Override
@@ -52,7 +55,10 @@ public class Quiz implements iQuiz {
     @Override
     public void setWoord(String spelerWoord) {
         iWoord woord = new Woord(spelerWoord);
-        woord.controleerWoord();
+        woord.setBibliotheek(new Bibliotheek());
+        if (woord.controleerWoord()) {
+            this.woord = woord;
+        }
     }
 
     @Override
