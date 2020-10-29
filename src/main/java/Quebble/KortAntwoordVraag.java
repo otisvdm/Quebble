@@ -14,11 +14,6 @@ public class KortAntwoordVraag extends Vraag {
     }
 
     @Override
-    public MeerkeuzeAntwoord[] getAntwoorden() {
-        throw new UnsupportedOperationException("Kort antwoord heeft geen meerkeuze antwoorden");
-    }
-
-    @Override
     public boolean controleerAntwoord(String antwoord) {
         for (KortAntwoord kortAntwoord : mogelijkeAntwoorden) {
             if (kortAntwoord.controleerAntwoord(antwoord)) {

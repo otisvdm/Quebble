@@ -23,11 +23,6 @@ public class MeerkeuzeVraag extends Vraag {
         }
     }
 
-    @Override
-    public MeerkeuzeAntwoord[] getAntwoorden() {
-        return meerkeuzeAntwoorden;
-    }
-
     public String[] getAntwoordenVoorQuiz() {
         String[] quizAntwoorden = new String[meerkeuzeAntwoorden.length];
         for (int i = 0; i < meerkeuzeAntwoorden.length; ++i) {

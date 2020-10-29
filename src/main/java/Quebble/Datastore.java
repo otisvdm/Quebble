@@ -18,7 +18,7 @@ public class Datastore {
 
 
     public boolean controleerGebruikersnaam(String gebruikersnaam) {
-        return true;
+        return false;
     }
 
     public iVraag[] getAlleActieveVragen() {
@@ -48,7 +48,6 @@ public class Datastore {
         }
     }
 
-    // TODO => Deze goed laten werken
     public iQuiz getQuiz(int quizId, String gebruikersnaam) {
         return alleQuizzen.get(0);
     }

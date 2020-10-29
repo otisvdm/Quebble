@@ -3,7 +3,6 @@ package Quebble;
 public class Quiz implements iQuiz {
 
     private int id;
-    private SpelGeschiedenis sg;
     private iSpeler speler;
     private iSpelerAntwoord[] antwoorden;
     private iVraag[] vragen;
